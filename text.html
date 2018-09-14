@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Logo App Generator</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="css/color.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="css/grid-style.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/main.js?v=1.0"></script>
+</head>
+<body>
+	<div class="main-container">
+		<div class="logo-app-header">
+			<h2>Logo Generator</h2>
+			<p>Create a simple logo in <b>5 minutes.</b> It's free.</p>
+		</div>
+		<div class="logo-app-content">
+			<div class="grid-row">
+				<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-6 grid-desktop-a-6 grid-desktop-b-6">
+					<div class="logo-app-input">
+						<div class="input-properties">
+							<label for="letter_input">Type letter or sign:</label>
+							<div class="label-text-color">A-Z</div>
+							<input type="text" id="letter_input" autocomplete="off" maxlength="2">
+						</div>
+					</div>
+					<div class="logo-app-input">
+						<h3>Properties</h3>
+
+						<div class="input-properties">
+							<label for="id_color_font">Change icon color:</label>
+							<input type="color" id="id_color_font" value="#59deff">
+							<div class="label-text-color">#</div>
+							<input type="text" id="id_color_font_text" value="FFFFFF" autocomplete="off">
+						</div>
+						<p id="error_input_text_color" style="color: red;display: none;">Error</p>
+						<div class="input-properties">
+							<label for="id_color_background_font">Change background color:</label>
+							<input type="color" id="id_color_background_font" value="#ffffff">
+							<div class="label-text-color">#</div>
+							<input type="text" id="id_color_background_font_text" value="FFFFFF" autocomplete="off">
+						</div>
+						<p id="error_input_background_color" style="color: red;display: none;">Error Not in a Hex color format</p>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_background_size">Size: <span class="value-input-logo" id="value_input_background_size">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_background_size" min="0" max="500" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_font_size">Font: <span class="value-input-logo" id="value_input_font_size">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_font_size" min="0" max="400"  value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_radius_background">Round: <span class="value-input-logo" id="value_input_radius_background">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_radius_background" min="0" max="50" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_text_shadow">Shadow: <span class="value-input-logo" id="value_input_text_shadow">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_text_shadow" min="0" max="100" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>	
+				</div>
+				<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-6 grid-desktop-a-6 grid-desktop-b-6">
+					<div class="logo-app-output">
+						<h3>Output</h3>
+
+						<div class="output-properties-text-logo">
+							<p id="icon_logo">A</p>
+						</div>
+
+						<div class="output-html">
+							<p>Output HTML</p>
+							<textarea id="code_properties"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,4256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Logo App Generator</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="css/color.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="css/grid-style.css?v=1.0">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/main.js?v=1.0"></script>
+</head>
+<body>
+	<div class="main-container">
+		<div class="logo-app-header">
+			<h2>Logo Generator</h2>
+			<p>Create a simple logo in <b>5 minutes.</b> It's free.</p>
+		</div>
+		<div class="logo-app-content">
+			<div class="grid-row">
+				<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-6 grid-desktop-a-6 grid-desktop-b-6">
+					<div class="logo-app-input">
+						<h3>Properties</h3>
+
+						<div class="input-properties">
+							<label for="id_color_font">Change icon color:</label>
+							<input type="color" id="id_color_font" value="#59deff">
+							<div class="label-text-color">#</div>
+							<input type="text" id="id_color_font_text" value="FFFFFF" autocomplete="off">
+						</div>
+						<p id="error_input_text_color" style="color: red;display: none;">Error</p>
+						<div class="input-properties">
+							<label for="id_color_background_font">Change background color:</label>
+							<input type="color" id="id_color_background_font" value="#ffffff">
+							<div class="label-text-color">#</div>
+							<input type="text" id="id_color_background_font_text" value="FFFFFF" autocomplete="off">
+						</div>
+						<p id="error_input_background_color" style="color: red;display: none;">Error Not in a Hex color format</p>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_background_size">Size: <span class="value-input-logo" id="value_input_background_size">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_background_size" min="0" max="500" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_font_size">Font: <span class="value-input-logo" id="value_input_font_size">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_font_size" min="0" max="400"  value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_radius_background">Round: <span class="value-input-logo" id="value_input_radius_background">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_radius_background" min="0" max="50" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="input-properties-range">
+							<div class="grid-row">
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-4 grid-desktop-a-4 grid-desktop-b-4">
+									<div class="input-properties-label">
+										<label for="id_text_shadow">Shadow: <span class="value-input-logo" id="value_input_text_shadow">0</span></label>
+									</div>
+								</div>
+								<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-8 grid-desktop-a-8 grid-desktop-b-8">
+									<div class="input-properties-input">
+										<input type="range" id="id_text_shadow" min="0" max="100" value="0">
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="grid-col grid-phone-a-12 grid-phone-b-12 grid-tablet-a-12 grid-tablet-b-6 grid-desktop-a-6 grid-desktop-b-6">
+					<div class="logo-app-output">
+						<h3>Output</h3>
+
+						<div class="output-properties">
+							<p>Output Logo: </p>
+							<i class="fa fa-500px" id="icon_logo"></i>
+						</div>
+
+						<div class="output-html">
+							<p>Output HTML</p>
+							<textarea id="code_properties"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="logo-list-content">
+			<h2>Logo</h2>
+			<h5>Click on icon below to choose it</h5>
+
+			<table class="bordered">
+				<thead>
+					
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-500px"></i>
+								fa-500px
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-adjust"></i>
+								fa-adjust
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-adn"></i>
+								fa-adn
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-align-justify"></i>
+								fa-align-justify
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-align-left"></i>
+								fa-align-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-align-right"></i>
+								fa-align-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ambulance"></i>
+								fa-ambulance
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-anchor"></i>
+								fa-anchor
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angellist"></i>
+								fa-angellist
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-double-down"></i>
+								fa-angle-double-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-double-left"></i>
+								fa-angle-double-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-double-right"></i>
+								 fa-angle-double-right
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-double-up"></i>
+								fa-angle-double-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-down"></i>
+								fa-angle-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-left"></i>
+								fa-angle-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-right"></i>
+								 fa-angle-right
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-up"></i>
+								fa-angle-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-archive"></i>
+								fa-archive
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-area-chart"></i>
+								fa-area-chart
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-down"></i>
+								 fa-arrow-circle-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-angle-up"></i>
+								fa-angle-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-archive"></i>
+								fa-archive
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-area-chart"></i>
+								fa-area-chart
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-down"></i>
+								 fa-arrow-circle-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-left"></i>
+								fa-arrow-circle-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-o-down"></i>
+								fa-arrow-circle-o-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-o-left"></i>
+								fa-arrow-circle-o-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-o-right"></i>
+								 fa-arrow-circle-o-right
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-o-up"></i>
+								fa-arrow-circle-o-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-right"></i>
+								fa-arrow-circle-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-circle-up"></i>
+								 fa-arrow-circle-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-arrow-down"></i>
+								  fa-arrow-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-left"></i>
+								fa-arrow-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-right"></i>
+								fa-arrow-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrow-up"></i>
+								 fa-arrow-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrows"></i>
+								  fa-arrows
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrows-alt"></i>
+								fa-arrows-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrows-h"></i>
+								 fa-arrows-h
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-arrows-v"></i>
+								  fa-arrows-v
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-asterisk"></i>
+								 fa-asterisk
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-at"></i>
+								fa-at
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-automobile"></i>
+								 fa-automobile
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-backward"></i>
+								  fa-backward
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-balance-scale"></i>
+								fa-balance-scale
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ban"></i>
+								fa-ban
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bank"></i>
+								 fa-bank
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bar-chart"></i>
+								  fa-bar-chart
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bar-chart-o"></i>
+								 fa-bar-chart-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-barcode"></i>
+								fa-barcode
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bars"></i>
+								fa-bars
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-0"></i>
+								fa-battery-0
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-1"></i>
+								fa-battery-1
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-2"></i>
+								fa-battery-2
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-3"></i>
+								fa-battery-3
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-4"></i>
+								  fa-battery-4
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-empty"></i>
+								 fa-battery-empty
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-full"></i>
+								fa-battery-full
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-half"></i>
+								 fa-battery-half
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-quarter"></i>
+								  fa-battery-quarter
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-battery-three-quarters"></i>
+								fa-battery-three-quarters
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bed"></i>
+								fa-bed
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-beer"></i>
+								 fa-beer
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bell"></i>
+								fa-bell
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bell-o"></i>
+								fa-bell-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bell-slash"></i>
+								fa-bell-slash
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bell-slash-o"></i>
+								fa-bell-slash-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bicycle"></i>
+								  fa-bicycle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-binoculars"></i>
+								fa-binoculars
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-birthday-cake"></i>
+								fa-birthday-cake
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bitbucket"></i>
+								fa-bitbucket
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bitbucket-square"></i>
+								  fa-bitbucket-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bitcoin"></i>
+								fa-bitcoin
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-black-tie"></i>
+								fa-black-tie
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bold"></i>
+								fa-bold
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bolt"></i>
+								  fa-bolt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bomb"></i>
+								fa-bomb
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-book"></i>
+								fa-book
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bookmark"></i>
+								fa-bookmark
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bookmark-o"></i>
+								 fa-bookmark-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-briefcase"></i>
+								fa-briefcase
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-btc"></i>
+								fa-btc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bug"></i>
+								fa-bug
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-building"></i>
+								fa-building
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-building-o"></i>
+								fa-building-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bullhorn"></i>
+								fa-bullhorn
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bullseye"></i>
+								fa-bullseye
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-bus"></i>
+								 fa-bus
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-buysellads"></i>
+								fa-buysellads
+							</span>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cab"></i>
+								fa-cab
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calculator"></i>
+								fa-calculator
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calendar"></i>
+								fa-calendar
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calendar-check-o"></i>
+								fa-calendar-check-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calendar-minus-o"></i>
+								fa-calendar-minus-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calendar-o"></i>
+								fa-calendar-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calendar-plus-o"></i>
+								fa-calendar-plus-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-calendar-times-o"></i>
+								fa-calendar-times-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-camera"></i>
+								fa-camera
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-camera-retro"></i>
+								fa-camera-retro
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-car"></i>
+								fa-car
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-down"></i>
+								fa-caret-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-left"></i>
+								fa-caret-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-right"></i>
+								fa-caret-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-square-o-down"></i>
+								 fa-caret-square-o-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-square-o-left"></i>
+								fa-caret-square-o-left
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-square-o-right"></i>
+								fa-caret-square-o-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-square-o-up"></i>
+								fa-caret-square-o-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-caret-up"></i>
+								 fa-caret-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-cart-arrow-down"></i>
+								 fa-cart-arrow-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cart-plus"></i>
+								fa-cart-plus
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc"></i>
+								fa-cc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-amex"></i>
+								fa-cc-amex
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-diners-club"></i>
+								fa-cc-diners-club
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-discover"></i>
+								fa-cc-discover
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-jcb"></i>
+								fa-cc-jcb
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-mastercard"></i>
+								 fa-cc-mastercard
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-paypal"></i>
+								fa-cc-paypal
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-stripe"></i>
+								fa-cc-stripe
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cc-visa"></i>
+								fa-cc-visa
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-certificate"></i>
+								fa-certificate
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chain"></i>
+								fa-chain
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chain-broken"></i>
+								fa-chain-broken
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-check"></i>
+							    fa-check
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-check-circle"></i>
+								 fa-check-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-check-circle-o"></i>
+								fa-check-circle-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-check-square"></i>
+								fa-check-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-check-square-o"></i>
+								 fa-check-square-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-circle-down"></i>
+								 fa-chevron-circle-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-circle-left"></i>
+								fa-chevron-circle-left
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-circle-right"></i>
+								fa-chevron-circle-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-circle-up"></i>
+								fa-chevron-circle-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-down"></i>
+								fa-chevron-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-lefts"></i>
+								fa-chevron-left
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-right"></i>
+								fa-chevron-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-chevron-up"></i>
+								fa-chevron-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-child"></i>
+								 fa-child
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-circle"></i>
+								fa-circle
+							</span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-circle-o"></i>
+								fa-circle-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-circle-o-notch"></i>
+								fa-circle-o-notch
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-circle-thin"></i>
+								fa-circle-thin
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-clipboard"></i>
+								fa-clipboard
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-clock-o"></i>
+								fa-clock-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-clone"></i>
+								fa-clone
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-close"></i>
+								fa-close
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cloud"></i>
+								fa-cloud
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cloud-download"></i>
+								fa-cloud-download
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cloud-upload"></i>
+								fa-cloud-upload
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-cny"></i>
+								 fa-cny
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-code"></i>
+								fa-code
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-code-fork"></i>
+								fa-code-fork
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-coffee"></i>
+								fa-coffee
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cog"></i>
+								fa-cog
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cogs"></i>
+								fa-cogs
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-columns"></i>
+								fa-columns
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-comment"></i>
+								fa-comment
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-comment-o"></i>
+								 fa-comment-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-commenting"></i>
+								fa-commenting
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-commenting-o"></i>
+								fa-commenting-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-comments"></i>
+								fa-comments
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-comments-o"></i>
+								 fa-comments-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-compass"></i>
+								fa-compass
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-compress"></i>
+								fa-compress
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-connectdevelop"></i>
+								fa-connectdevelop
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-contao"></i>
+								fa-contao
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-copy"></i>
+								fa-copy
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-copyright"></i>
+								fa-copyright
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-creative-commons"></i>
+								fa-creative-commons
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-credit-card"></i>
+								 fa-credit-card
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-crop"></i>
+								fa-crop
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-crosshairs"></i>
+								fa-crosshairs
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-css3"></i>
+								fa-css3
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cube"></i>
+								 fa-cube
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cubes"></i>
+								fa-cubes
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cut"></i>
+								fa-cut
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-cutlery"></i>
+								fa-cutlery
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-dashboard"></i>
+								fa-dashboard
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-dashcube"></i>
+								 fa-dashcube
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-database"></i>
+								fa-database
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-dedent"></i>
+								fa-dedent
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-delicious"></i>
+								 fa-delicious
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-desktop"></i>
+								fa-desktop
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-deviantart"></i>
+								fa-deviantart
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-diamond"></i>
+								fa-diamond
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-digg"></i>
+								 fa-digg
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-dollar"></i>
+								fa-dollar
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa "></i>
+								 fa-dot-circle-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-download"></i>
+								fa-download
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-edit"></i>
+								 fa-edit
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-eject"></i>
+								fa-eject
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ellipsis-h"></i>
+								fa-ellipsis-h
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ellipsis-v"></i>
+								fa-ellipsis-v
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-empire"></i>
+								 fa-empire
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-envelopee"></i>
+								fa-envelope
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-envelope-o"></i>
+								fa-envelope-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-envelope-square"></i>
+								fa-envelope-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-eraser"></i>
+								fa-eraser
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-eur"></i>
+								fa-eur
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-euro"></i>
+								fa-euro
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-exchange"></i>
+								fa-exchange
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-exclamation"></i>
+								 fa-exclamation
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-exclamation-circle"></i>
+								 fa-exclamation-circle
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-exclamation-triangle"></i>
+								fa-exclamation-triangle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-expand"></i>
+								fa-expand
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-expeditedssl"></i>
+								 fa-expeditedssl
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-external-link"></i>
+								fa-external-link
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-external-link-square"></i>
+								fa-external-link-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-eye"></i>
+								fa-eye
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-eye-slash"></i>
+								fa-eye-slash
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-eyedropper"></i>
+								 fa-eyedropper
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-fast-backward"></i>
+								fa-fast-backward
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-fast-forward"></i>
+								fa-fast-forward
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-fax"></i>
+								 fa-fax
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-feed"></i>
+								fa-feed
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-female"></i>
+								fa-female
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-fighter-jet"></i>
+								fa-fighter-jet
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file"></i>
+								fa-file
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-archive-o"></i>
+								fa-file-archive-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-audio-o"></i>
+								fa-file-audio-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-code-o"></i>
+								fa-file-code-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-excel-o"></i>
+								fa-file-excel-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa  fa-file-image-o"></i>
+								 fa-file-image-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-movie-o"></i>
+								fa-file-movie-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-o"></i>
+								fa-file-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-pdf-o"></i>
+								fa-file-pdf-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-photo-o"></i>
+								fa-file-photo-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-picture-o"></i>
+								fa-file-picture-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-powerpoint-o"></i>
+								fa-file-powerpoint-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-sound-o"></i>
+								 fa-file-sound-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-text"></i>
+								fa-file-text
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-text-o"></i>
+								fa-file-text-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-video-o"></i>
+								fa-file-video-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-word-o"></i>
+								fa-file-word-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-file-zip-o"></i>
+								fa-file-zip-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-files-o"></i>
+								fa-files-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-film"></i>
+								fa-film
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-filter"></i>
+								fa-filter
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-fire"></i>
+								fa-fire
+							</span>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-fire-extinguisher"></i>
+								fa-fire-extinguisher
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-flag"></i>
+								fa-flag
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-flag-checkered"></i>
+								fa-flag-checkered
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-flag-o"></i>
+								fa-flag-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-flash"></i>
+								fa-flash
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-flask"></i>
+								fa-flask
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-floppy-o"></i>
+								fa-floppy-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-folder"></i>
+								fa-folder
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-folder-o"></i>
+								fa-folder-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-folder-open"></i>
+								fa-folder-open
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-folder-open-o"></i>
+								fa-folder-open-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-font"></i>
+								fa-font
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-fonticons"></i>
+								fa-fonticons
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-forumbee"></i>
+								fa-forumbee
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-forward"></i>
+								fa-forward
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-foursquare"></i>
+								fa-foursquare
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-frown-o"></i>
+								fa-frown-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-futbol-o"></i>
+								fa-futbol-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gamepad"></i>
+								fa-gamepad
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gavel"></i>
+								fa-gavel
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gbp"></i>
+								fa-gbp
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ge"></i>
+								fa-ge
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gear"></i>
+								fa-gear
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gears"></i>
+								fa-gears
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-genderless"></i>
+								fa-genderless
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-get-pocket"></i>
+								fa-get-pocket
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gg"></i>
+								fa-gg
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gg-circle"></i>
+								fa-gg-circle
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gift"></i>
+								 fa-gift
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-git"></i>
+								fa-git
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-git-square"></i>
+								fa-git-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gittip"></i>
+								fa-gittip
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-glass"></i>
+								fa-glass
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-globe"></i>
+								fa-globe
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-graduation-cap"></i>
+								fa-graduation-cap
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-gratipay"></i>
+								fa-gratipay
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-group"></i>
+								fa-group
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-h-square"></i>
+								fa-h-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hacker-news"></i>
+								fa-hacker-news
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-grab-o"></i>
+								fa-hand-grab-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-lizard-o"></i>
+								fa-hand-lizard-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-o-down"></i>
+								fa-hand-o-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-o-left"></i>
+								fa-hand-o-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-o-right"></i>
+								 fa-hand-o-right
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-o-up"></i>
+							   fa-hand-o-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-paper-o"></i>
+								fa-hand-paper-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-peace-o"></i>
+								 fa-hand-peace-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-pointer-o"></i>
+								fa-hand-pointer-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-rock-o"></i>
+								fa-hand-rock-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-scissors-o"></i>
+								fa-hand-scissors-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-spock-o"></i>
+								fa-hand-spock-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hand-stop-o"></i>
+								fa-hand-stop-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hdd-o"></i>
+								fa-hdd-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-header"></i>
+								fa-header
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-headphones"></i>
+								fa-headphones
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-heart"></i>
+								fa-heart
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-heart-o"></i>
+								fa-heart-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-heartbeat"></i>
+								fa-heartbeat
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-history"></i>
+								fa-history
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-home"></i>
+								fa-home
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hospital-o"></i>
+							fa-hospital-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hotel"></i>
+								fa-hotel
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass"></i>
+								fa-hourglass
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-1"></i>
+								fa-hourglass-1
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-2"></i>
+								fa-hourglass-2
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-3"></i>
+								fa-hourglass-3
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-end"></i>
+								fa-hourglass-end
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-half"></i>
+								fa-hourglass-half
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-o"></i>
+								fa-hourglass-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-hourglass-start"></i>
+								fa-hourglass-start
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-houzz"></i>
+								fa-houzz
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-html5"></i>
+								fa-html5
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-i-cursor"></i>
+								fa-i-cursor
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ils"></i>
+								fa-ils
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-image"></i>
+								fa-image
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-inbox"></i>
+								fa-inbox
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-indent"></i>
+								fa-indent
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-industry"></i>
+								fa-industry
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-info"></i>
+								fa-info
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-info-circle"></i>
+								fa-info-circle
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-inr"></i>
+								fa-inr
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-institution"></i>
+								fa-institution
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-internet-explorer"></i>
+								fa-internet-explorer
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-intersex"></i>
+								fa-intersex
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ioxhost"></i>
+								fa-ioxhost
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-italic"></i>
+								fa-italic
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-joomla"></i>
+								 fa-joomla
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-jpy"></i>
+								fa-jpy
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-jsfiddle"></i>
+								fa-jsfiddle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-key"></i>
+								fa-key
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-keyboard-o"></i>
+								fa-keyboard-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-krw"></i>
+								fa-krw
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-language"></i>
+								fa-language
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-laptop"></i>
+								fa-laptop
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-lastfm"></i>
+								 fa-lastfm
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-lastfm-square"></i>
+								fa-lastfm-square
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-leaf"></i>
+								fa-leaf
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-leanpub"></i>
+								fa-leanpub
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-legal"></i>
+								fa-legal
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-lemon-o"></i>
+								fa-lemon-o
+							</span>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-level-down"></i>
+								fa-level-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-level-up"></i>
+								fa-level-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-life-bouy"></i>
+								fa-life-bouy
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-life-buoy"></i>
+								fa-life-buoy
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-life-ring"></i>
+								fa-life-ring
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-life-saver"></i>
+								fa-life-saver
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-lightbulb-o"></i>
+								fa-lightbulb-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-line-chart"></i>
+								fa-line-chart
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-link"></i>
+								fa-link
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-list"></i>
+								fa-list
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-list-alt"></i>
+								fa-list-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-list-ol"></i>
+								fa-list-ol
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-list-ul"></i>
+								fa-list-ul
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-location-arrow"></i>
+								fa-location-arrow
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-lock"></i>
+								fa-lock
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-long-arrow-down"></i>
+								fa-long-arrow-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-long-arrow-left"></i>
+								fa-long-arrow-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-long-arrow-right"></i>
+								fa-long-arrow-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-long-arrow-up"></i>
+								fa-long-arrow-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-magic"></i>
+								fa-magic
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-magnet"></i>
+								fa-magnet
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mail-forward"></i>
+								fa-mail-forward
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mail-reply"></i>
+								fa-mail-reply
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mail-reply-all"></i>
+								fa-mail-reply-all
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-male"></i>
+								fa-male
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-map"></i>
+								fa-map
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-map-marker"></i>
+								fa-map-marker
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-map-o"></i>
+								fa-map-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-map-pin"></i>
+								fa-map-pin
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-map-signs"></i>
+								fa-map-signs
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mars"></i>
+								fa-mars
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mars-double"></i>
+								fa-mars-double
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mars-stroke"></i>
+								fa-mars-stroke
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mars-stroke-h"></i>
+								fa-mars-stroke-h
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mars-stroke-v"></i>
+								fa-mars-stroke-v
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-maxcdn"></i>
+								fa-maxcdn
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-meanpath"></i>
+								fa-meanpath
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-medium"></i>
+								fa-medium
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-medkit"></i>
+								fa-medkit
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-meh-o"></i>
+								fa-meh-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mercury"></i>
+								fa-mercury
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-microphone"></i>
+								fa-microphone
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-microphone-slash"></i>
+								fa-microphone-slash
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-minus"></i>
+								fa-minus
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-minus-circle"></i>
+								fa-minus-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-minus-square"></i>
+								fa-minus-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-minus-square-o"></i>
+								fa-minus-square-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mobile"></i>
+								fa-mobile
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mobile-phone"></i>
+								fa-mobile-phone
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-money"></i>
+								fa-money
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-moon-o"></i>
+								fa-moon-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mortar-board"></i>
+								fa-mortar-board
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-motorcycle"></i>
+								fa-motorcycle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-mouse-pointer"></i>
+								fa-mouse-pointer
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-music"></i>
+								fa-music
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-navicon"></i>
+								fa-navicon
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-neuter"></i>
+								fa-neuter
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-newspaper-o"></i>
+								fa-newspaper-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-object-group"></i>
+								fa-object-group
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-object-ungroup"></i>
+								fa-object-ungroup
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-odnoklassniki"></i>
+								fa-odnoklassniki
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-odnoklassniki-square"></i>
+								fa-odnoklassniki-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-opencart"></i>
+								fa-opencart
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-openid"></i>
+								fa-openid
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-optin-monster"></i>
+								fa-optin-monster
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-outdent"></i>
+								fa-outdent
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pagelines"></i>
+								fa-pagelines
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paint-brush"></i>
+								fa-paint-brush
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paper-plane"></i>
+								fa-paper-plane
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paper-plane-o"></i>
+								fa-paper-plane-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paperclip"></i>
+								fa-paperclip
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paragraph"></i>
+								fa-paragraph
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paste"></i>
+								fa-paste
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pause"></i>
+								fa-pause
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paw"></i>
+								fa-paw
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-paypal"></i>
+								 fa-paypal
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pencil"></i>
+								fa-pencil
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pencil-square"></i>
+								fa-pencil-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pencil-square-o"></i>
+								fa-pencil-square-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-phone"></i>
+								fa-phone
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-phone-square"></i>
+								fa-phone-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-photo"></i>
+								fa-photo
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-picture-o"></i>
+								fa-picture-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pie-chart"></i>
+								fa-pie-chart
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pied-piper"></i>
+								fa-pied-piper
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-pied-piper-alt"></i>
+								fa-pied-piper-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-plane"></i>
+								fa-plane
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-play"></i>
+								fa-play
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-play-circle"></i>
+								fa-play-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-play-circle-o"></i>
+								fa-play-circle-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-plug"></i>
+								fa-plug
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-plus"></i>
+								fa-plus
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-plus-circle"></i>
+								fa-plus-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-plus-square"></i>
+								fa-plus-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-plus-square-o"></i>
+								fa-plus-square-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-power-off"></i>
+								fa-power-off
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-print"></i>
+								fa-print
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-puzzle-piece"></i>
+								fa-puzzle-piece
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-qq"></i>
+								fa-qq
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-qrcode"></i>
+								fa-qrcode
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-question"></i>
+								fa-question
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-question-circle"></i>
+								fa-question-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-quote-left"></i>
+								fa-quote-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-quote-right"></i>
+								fa-quote-right
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ra"></i>
+								 fa-ra
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-random"></i>
+								fa-random
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rebel"></i>
+								fa-rebel
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-recycle"></i>
+								fa-recycle
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-reddit"></i>
+								fa-reddit
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-reddit-square"></i>
+								fa-reddit-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-refresh"></i>
+								fa-refresh
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-registered"></i>
+								fa-registered
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-remove"></i>
+								fa-remove
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-renren"></i>
+								fa-renren
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-reorder"></i>
+								fa-reorder
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-repeat"></i>
+								fa-repeat
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-reply"></i>
+								fa-reply
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-reply-all"></i>
+								fa-reply-all
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-retweet"></i>
+								fa-retweet
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rmb"></i>
+								fa-rmb
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-road"></i>
+								fa-road
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rocket"></i>
+								fa-rocket
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rotate-left"></i>
+								fa-rotate-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rotate-right"></i>
+								fa-rotate-right
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rouble"></i>
+								fa-rouble
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rss"></i>
+								fa-rss
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rss-square"></i>
+								fa-rss-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rub"></i>
+								fa-rub
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ruble"></i>
+								fa-ruble
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-rupee"></i>
+								fa-rupee
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-safari"></i>
+								fa-safari
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-save"></i>
+								fa-save
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-scissors"></i>
+								fa-scissors
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-search"></i>
+								fa-search
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-search-minus"></i>
+								fa-search-minus
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-search-plus"></i>
+								fa-search-plus
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sellsy"></i>
+								fa-sellsy
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-send"></i>
+								fa-send
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-send-o"></i>
+								fa-send-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-server"></i>
+								fa-server
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-share"></i>
+								fa-share
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-share-alt"></i>
+								fa-share-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-share-alt"></i>
+								fa-share-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-share-square"></i>
+								fa-share-square
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-share-square-o"></i>
+								fa-share-square-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-shekel"></i>
+								fa-shekel
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sheqel"></i>
+								fa-sheqel
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-shield"></i>
+								fa-shield
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ship"></i>
+								fa-ship
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-shirtsinbulk"></i>
+								fa-shirtsinbulk
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-shopping-cart"></i>
+								fa-shopping-cart
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sign-in"></i>
+								fa-sign-in
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sign-out"></i>
+								fa-sign-out
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-signal"></i>
+								fa-signal
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-simplybuilt"></i>
+								fa-simplybuilt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sitemap"></i>
+								fa-sitemap
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-skyatlas"></i>
+								fa-skyatlas
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-skype"></i>
+								fa-skype
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-slack"></i>
+								fa-slack
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sliders"></i>
+								fa-sliders
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-slideshare"></i>
+								fa-slideshare
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-slideshare"></i>
+								fa-slideshare
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-soccer-ball-o"></i>
+								fa-soccer-ball-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort"></i>
+								fa-sort
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-alpha-asc"></i>
+								fa-sort-alpha-asc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-alpha-desc"></i>
+								fa-sort-alpha-desc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-amount-asc"></i>
+								fa-sort-amount-asc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-amount-desc"></i>
+								fa-sort-amount-desc
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-asc"></i>
+								fa-sort-asc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-desc"></i>
+								fa-sort-desc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-down"></i>
+								fa-sort-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-numeric-asc"></i>
+								fa-sort-numeric-asc
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-numeric-desc"></i>
+								 fa-sort-numeric-desc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sort-up"></i>
+								fa-sort-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-soundcloud"></i>
+								fa-soundcloud
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-space-shuttle"></i>
+								fa-space-shuttle
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-spinner"></i>
+								fa-spinner
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-spoon"></i>
+								fa-spoon
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-spotify"></i>
+								fa-spotify
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-square"></i>
+								fa-square
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-square-o"></i>
+								fa-square-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-stack-exchange"></i>
+								fa-stack-exchange
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-stack-overflow"></i>
+								fa-stack-overflow
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-star"></i>
+								fa-star
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-star-half"></i>
+								fa-star-half
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-star-half-empty"></i>
+								 fa-star-half-empty
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-star-half-full"></i>
+								fa-star-half-full
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-star-half-o"></i>
+								fa-star-half-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-star-o"></i>
+								fa-star-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-steam"></i>
+								fa-steam
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-steam-square"></i>
+								 fa-steam-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-step-backward"></i>
+								fa-step-backward
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-step-forward"></i>
+								fa-step-forward
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-stethoscope"></i>
+								fa-stethoscope
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sticky-note"></i>
+								fa-sticky-note
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sticky-note-o-o"></i>
+								fa-sticky-note-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-stop"></i>
+								fa-stop
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-street-view"></i>
+								fa-street-view
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-strikethrough"></i>
+								 fa-strikethrough
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-stumbleupon"></i>
+								fa-stumbleupon
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-stumbleupon-circle"></i>
+								fa-stumbleupon-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-subscript"></i>
+								fa-subscript
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-subway"></i>
+								fa-subway
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-suitcase"></i>
+								fa-suitcase
+							</span>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-sun-o"></i>
+								fa-sun-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-superscript"></i>
+								fa-superscript
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-support"></i>
+								fa-support
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-table"></i>
+								fa-table
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tablet"></i>
+								fa-tablet
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tachometer"></i>
+								fa-tachometer
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tag"></i>
+								fa-tag
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tags"></i>
+								fa-tags
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tasks"></i>
+								fa-tasks
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-taxi"></i>
+								fa-taxi
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-television"></i>
+								fa-television
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tencent-weibo"></i>
+								 fa-tencent-weibo
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-terminal"></i>
+								fa-terminal
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-text-height"></i>
+								fa-text-height
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-text-width"></i>
+								fa-text-width
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-th"></i>
+								fa-th
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-th-large"></i>
+								fa-th-large
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-th-list"></i>
+								fa-th-list
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-thumb-tacky"></i>
+								fa-thumb-tack
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-thumbs-down"></i>
+								fa-thumbs-down
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-thumbs-o-down"></i>
+								fa-thumbs-o-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-thumbs-o-up"></i>
+								fa-thumbs-o-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-thumbs-up"></i>
+								fa-thumbs-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-ticket"></i>
+								fa-ticket
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-times"></i>
+								fa-times
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-times-circle"></i>
+								fa-times-circle
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-times-circle-o"></i>
+								fa-times-circle-o
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tint"></i>
+								fa-tint
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-toggle-down"></i>
+								fa-toggle-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-toggle-left"></i>
+								fa-toggle-left
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-toggle-off"></i>
+								fa-toggle-off
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-toggle-on"></i>
+								fa-toggle-on
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-toggle-right"></i>
+								fa-toggle-right
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-toggle-up"></i>
+								ffa-toggle-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-trademark"></i>
+								fa-trademark
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-train"></i>
+								fa-train
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-transgender"></i>
+								fa-transgender
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-transgender-alt"></i>
+								fa-transgender-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-trash"></i>
+								fa-trash
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-trash-o"></i>
+								fa-trash-o
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tree"></i>
+								fa-tree
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-trello"></i>
+								fa-trello
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tripadvisor"></i>
+								fa-tripadvisor
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-trophy"></i>
+								fa-trophy
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-truck"></i>
+								fa-truck
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-try"></i>
+								fa-try
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tty"></i>
+								fa-tty
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-turkish-lira"></i>
+								fa-turkish-lira
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-tv"></i>
+								fa-tv
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-twitch"></i>
+								fa-twitch
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-umbrella"></i>
+								fa-umbrella
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-underline"></i>
+								fa-underline
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-undo"></i>
+								fa-undo
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-university"></i>
+								fa-university
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-unlink"></i>
+								fa-unlink
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-unlock"></i>
+								fa-unlock
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-unlock-alt"></i>
+								fa-unlock-alt
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-unsorted"></i>
+								fa-unsorted
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-upload"></i>
+								fa-upload
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-usd"></i>
+								fa-usd
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-user"></i>
+								fa-user
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-user-md"></i>
+								fa-user-md
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-user-plus"></i>
+								fa-user-plus
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-user-secret"></i>
+								fa-user-secret
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-user-times"></i>
+								fa-user-times
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-users"></i>
+								fa-users
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-venus"></i>
+								fa-venus
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-venus-double"></i>
+								fa-venus-double
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-venus-mars"></i>
+								fa-venus-mars
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-viacoin"></i>
+								fa-viacoin
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-video-camera"></i>
+								fa-video-camera
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-vine"></i>
+								fa-vine
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-volume-down"></i>
+								fa-volume-down
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-volume-off"></i>
+								fa-volume-off
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-volume-up"></i>
+								fa-volume-up
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-warning"></i>
+								fa-warning
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-wechat"></i>
+								fa-wechat
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-weibo"></i>
+								fa-weibo
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-weixin"></i>
+								fa-weixin
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-wheelchair"></i>
+								fa-wheelchair
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-wifi"></i>
+								fa-wifi
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-wikipedia-w"></i>
+								fa-wikipedia-w
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-won"></i>
+								fa-won
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-wrench"></i>
+								fa-wrench
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-xing"></i>
+								fa-xing
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-xing-square"></i>
+								fa-xing-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-y-combinator"></i>
+								fa-y-combinator
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-y-combinator-square"></i>
+								fa-y-combinator-square
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-yahoo"></i>
+								fa-yahoo
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-yc"></i>
+								fa-yc
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-yc-square"></i>
+								fa-yc-square
+							</span>
+						</td>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-yelp"></i>
+								fa-yelp
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="fa-logo-choose">
+								<i class="fa fa-yen"></i>
+								fa-yen
+							</span>
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
